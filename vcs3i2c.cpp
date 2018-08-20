@@ -4,15 +4,7 @@
  */
 
 #include "vcs3i2c.h"
-#include <linux/i2c-dev.h>
-#include <fcntl.h>    /* For O_RDWR */
-#include <unistd.h>   /* For open(), */
-#include <sys/ioctl.h>
-#include <errno.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 
 int addr = 0x63;
 int fd;
@@ -40,7 +32,7 @@ int getState() { //-1:no data, 0:err, 1:ok
 	length = 1;			//<<< Number of bytes to read
 	if (read(fd, readB, length) != length) {
 		//ERROR HANDLING: i2c transaction failed
-		fprintf(stderr,"Failed to read from the i2c bus.\n");
+		fprintf(stderr,"getState::Failed to read.\n");
 		return -1;
 	} else {
 		//printf("Data read: %s\n", readB);
@@ -55,13 +47,13 @@ int16_t getVal(uint8_t reg) {
 	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
-		fprintf(stderr,"Failed to write to the i2c bus.\n");
+		fprintf(stderr,"getVal:%i:Failed to write.\n",reg);
 		return -1;
 	}
 	length = 2;			//<<< Number of bytes to read
 	if (read(fd, readB, length) != length) {
 		//ERROR HANDLING: i2c transaction failed
-		fprintf(stderr,"Failed to read from the i2c bus.\n");
+		fprintf(stderr,"getVal:%i:Failed to read .\n");
 		return -1;
 	} else {
 		//printf("Data read: %s\n", readB);
@@ -93,7 +85,7 @@ int setReg(uint8_t reg) {
 	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
-		fprintf(stderr,"Failed to write to the i2c bus.\n");
+		fprintf(stderr,"setReg:%i:Failed to write.\n",reg);
 		return -1;
 	} else {
 		return getState();

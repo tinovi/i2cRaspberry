@@ -6,6 +6,19 @@
 #ifndef VCS3I2C_H_
 #define VCS3I2C_H_
 
+
+
+#include <linux/i2c-dev.h>
+#include <fcntl.h>    /* For O_RDWR */
+#include <unistd.h>   /* For open(), */
+#include <sys/ioctl.h>
+#include <errno.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
 #define ADDR 0x63
 
 #define  REG_READ_START    0x01
