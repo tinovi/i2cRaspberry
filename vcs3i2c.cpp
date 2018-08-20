@@ -36,7 +36,7 @@ int getState() { //-1:no data, 0:err, 1:ok
 		printf("Failed to read from the i2c bus.\n");
 		return -1;
 	} else {
-		printf("Data read: %s\n", readB);
+		//printf("Data read: %s\n", readB);
 		return readB[0];
 	}
 }
@@ -57,7 +57,7 @@ int16_t getVal(uint8_t reg) {
 		printf("Failed to read from the i2c bus.\n");
 		return -1;
 	} else {
-		printf("Data read: %s\n", readB);
+		//printf("Data read: %s\n", readB);
 		int16_t ret;
 		byte *pointer = (uint8_t *) &ret;
 		pointer[0] = readB[0];
