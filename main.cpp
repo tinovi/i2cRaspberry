@@ -18,6 +18,7 @@ int main(int argc, char **argv) {
 		fprintf(stdout, "change address: <old Address> addr <new Address> \n");
 		fprintf(stdout, "calibrate air: <Address> air \n");
 		fprintf(stdout, "calibrate water: <Address> water \n");
+		fprintf(stdout, "calibrate ec: <Address> calec <current µS/cm> \n");
 		return 0;
 	}
 	int addr = strtol(argv[1], NULL, 16);
@@ -29,6 +30,16 @@ int main(int argc, char **argv) {
 		}
 		int i = strtol(argv[3], NULL, 16);
 		newAddress(i);
+		return 0;
+	}
+
+	if (strcmp(argv[2], "calec") == 0) {
+		if (argc < 4) {
+			fprintf(stderr, "Please supply new value in µS/cm\n");
+			exit (EXIT_FAILURE);
+		}
+		int i = strtol(argv[3], NULL, 16);
+		calibrationEC(i);
 		return 0;
 	}
 
