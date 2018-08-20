@@ -33,18 +33,10 @@ int main(int argc, char **argv) {
 	if (strcmp(argv[2], "vals") == 0) {
 		newReading(); // start sensor reading
 		//napms(30); //let sensor read data
-		float e25 = getE25();
-		float ec = getEC();
-		float temp = getTemp();
-		float vwc = getVWC();
-		fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",e25, ec,temp,vwc);
+		fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
 		return 0;
 	}
 
-	if (strcmp(argv[2], "air") == 0) {
-		fprintf(stdout, "calibration result: %i",calibrationAir());
-		return 0;
-	}
 	if (strcmp(argv[2], "air") == 0) {
 		fprintf(stdout, "calibration result: %i",calibrationAir());
 		return 0;
