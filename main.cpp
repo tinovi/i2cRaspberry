@@ -16,6 +16,8 @@ int main(int argc, char **argv) {
 		fprintf(stdout, "usage: \n");
 		fprintf(stdout, "read vals: <Address> vals \n");
 		fprintf(stdout, "change address: <old Address> addr <new Address> \n");
+		fprintf(stdout, "calibrate air: <Address> air \n");
+		fprintf(stdout, "calibrate water: <Address> water \n");
 		return 0;
 	}
 	int addr = strtol(argv[1], NULL, 16);
