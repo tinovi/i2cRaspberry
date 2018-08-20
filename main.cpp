@@ -1,6 +1,7 @@
-#include <ncurses.h>
+//#include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "vcs3i2c.h"
 
 int main(int argc, char **argv) {
@@ -11,7 +12,7 @@ int main(int argc, char **argv) {
 				"require arguments: <address> <command> <... optional command args> \n");
 		exit (EXIT_FAILURE);
 	}
-	if (strncmp(argv[2], "help", 100) == 0) {
+	if (strcmp(argv[2], "help") == 0) {
 		fprintf(stdout, "usage: \n");
 		fprintf(stdout, "read vals: <Address> vals \n");
 		fprintf(stdout, "change address: <old Address> addr <new Address> \n");
@@ -19,7 +20,7 @@ int main(int argc, char **argv) {
 	}
 	int addr = strtol(argv[1], NULL, 16);
 	init(addr);
-	if (strncmp(argv[2], "addr", 100) == 0) {
+	if (strcmp(argv[2], "addr") == 0) {
 		if (argc < 4) {
 			fprintf(stderr, "Please supply new addres\n");
 			exit (EXIT_FAILURE);
@@ -29,9 +30,9 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 
-	if (strncmp(argv[2], "vals", 100) == 0) {
+	if (strcmp(argv[2], "vals") == 0) {
 		newReading(); // start sensor reading
-		napms(30); //let sensor read data
+		//napms(30); //let sensor read data
 		float e25 = getE25();
 		float ec = getEC();
 		float temp = getTemp();
@@ -40,15 +41,15 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 
-	if (strncmp(argv[2], "air", 100) == 0) {
+	if (strcmp(argv[2], "air") == 0) {
 		fprintf(stdout, "calibration result: %i",calibrationAir());
 		return 0;
 	}
-	if (strncmp(argv[2], "air", 100) == 0) {
+	if (strcmp(argv[2], "air") == 0) {
 		fprintf(stdout, "calibration result: %i",calibrationAir());
 		return 0;
 	}
-	if (strncmp(argv[2], "water", 100) == 0) {
+	if (strcmp(argv[2], "water") == 0) {
 		fprintf(stdout, "calibration result: %i",calibrationWater());
 		return 0;
 	}
