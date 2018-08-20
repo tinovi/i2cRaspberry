@@ -1,6 +1,6 @@
 /*
  * vcs3i2c.h
- *
+ * https://www.kernel.org/doc/Documentation/i2c/dev-interface
  */
 
 #ifndef VCS3I2C_H_
