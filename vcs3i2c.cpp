@@ -5,6 +5,9 @@
 
 #include "vcs3i2c.h"
 #include <linux/i2c-dev.h>
+#include <fcntl.h>    /* For O_RDWR */
+#include <unistd.h>   /* For open(), */
+#include <sys/ioctl.h>
 #include <errno.h>
 #include <stdint.h>
 #include <stdio.h>

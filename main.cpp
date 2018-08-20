@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "vcs3i2c.h"
+#include <unistd.h>
 
 int main(int argc, char **argv) {
 
@@ -45,7 +46,7 @@ int main(int argc, char **argv) {
 
 	if (strcmp(argv[2], "vals") == 0) {
 		newReading(); // start sensor reading
-		//napms(30); //let sensor read data
+		usleep(30000); //let sensor read data
 		fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
 		return 0;
 	}

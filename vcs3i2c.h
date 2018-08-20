@@ -26,7 +26,7 @@ int init(int address);
 int newAddress(int newAddr);
 int calibrationAir();
 int calibrationWater();
-int calibrationEC(int valueUs);
+int calibrationEC(int16_t valueUs);
 int newReading();
 float getE25();
 float getEC();
