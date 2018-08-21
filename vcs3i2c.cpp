@@ -29,7 +29,7 @@ uint8_t weriteB[3] = { 0 };
 int length;
 
 int getState() { //-1:no data, 0:err, 1:ok
-	usleep(10000);
+	usleep(100000);
 	length = 1;			//<<< Number of bytes to read
 	if (read(fd, readB, length) != length) {
 		//ERROR HANDLING: i2c transaction failed
@@ -51,6 +51,7 @@ int16_t getVal(uint8_t reg) {
 		fprintf(stderr,"getVal:%i:Failed to write.\n",reg);
 		return -1;
 	}
+	usleep(100000);
 	length = 2;			//<<< Number of bytes to read
 	if (read(fd, readB, length) != length) {
 		//ERROR HANDLING: i2c transaction failed
