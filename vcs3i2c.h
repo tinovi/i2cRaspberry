@@ -46,7 +46,7 @@ float getE25();
 float getEC();
 float getTemp();
 float getVWC();
-int getData(float *retVal);
+int getData(float retVal[]);
 
 
 #endif /* VCS3I2C_H_ */
