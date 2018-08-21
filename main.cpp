@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 		fprintf(stdout, "change address: <old Address> addr <new Address> \n");
 		fprintf(stdout, "calibrate air: <Address> air \n");
 		fprintf(stdout, "calibrate water: <Address> water \n");
-		fprintf(stdout, "calibrate ec: <Address> calec <current µS/cm> \n");
+		fprintf(stdout, "calibrate ec: <Address> calec <current uS/cm> \n");
 		return 0;
 	}
 	int addr = strtol(argv[1], NULL, 16);
