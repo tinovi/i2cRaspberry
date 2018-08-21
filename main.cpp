@@ -47,7 +47,10 @@ int main(int argc, char **argv) {
 	if (strcmp(argv[2], "vals") == 0) {
 		newReading(); // start sensor reading
 		usleep(30000); //let sensor read data
-		fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
+		//fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
+		float fat[4];
+		getData(fat);
+		fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",fat[0], fat[1],fat[2],fat[3]);
 		return 0;
 	}
 

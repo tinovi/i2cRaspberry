@@ -4,7 +4,7 @@
  */
 
 #include "vcs3i2c.h"
-
+#include <unistd.h>
 
 int addr = 0x63;
 int fd;
@@ -29,6 +29,7 @@ uint8_t weriteB[3] = { 0 };
 int length;
 
 int getState() { //-1:no data, 0:err, 1:ok
+	usleep(10000);
 	length = 1;			//<<< Number of bytes to read
 	if (read(fd, readB, length) != length) {
 		//ERROR HANDLING: i2c transaction failed
@@ -141,20 +142,20 @@ float getVWC() {
 	return getVal(REG_READ_VWC) / 100;
 }
 
-int getData(float *readings) {
+int getData(float readings[]) {
 	weriteB[0] = REG_GET_DATA;
 	length = 1;			//<<< Number of bytes to write
 	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
-		fprintf(stderr,"Failed to write to the i2c bus.\n");
+		fprintf(stderr,"getData::Failed to write \n");
 		return -1;
 	} else {
 
 		length = 8;			//<<< Number of bytes to read
 		if (read(fd, readB, length) != length) {
 			//ERROR HANDLING: i2c transaction failed
-			fprintf(stderr,"Failed to read from the i2c bus.\n");
+			fprintf(stderr,"getData::Failed to read \n");
 			return -1;
 		} else {
 			int16_t ret;
