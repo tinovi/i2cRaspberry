@@ -9,6 +9,7 @@
 
 
 #include <linux/i2c-dev.h>
+#include <linux/i2c.h>
 #include <fcntl.h>    /* For O_RDWR */
 #include <unistd.h>   /* For open(), */
 #include <sys/ioctl.h>

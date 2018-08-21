@@ -44,7 +44,7 @@ int16_t getVal(uint8_t reg) {
 
 	weriteB[0] = reg;
 	length = 1;			//<<< Number of bytes to write
-	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
+	if (write(fd, weriteB, length) != length)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
 		fprintf(stderr,"getVal:%i:Failed to write.\n",reg);
@@ -69,7 +69,7 @@ int setReg8(uint8_t reg, uint8_t val) {
 	weriteB[0] = reg;
 	weriteB[1] = val;
 	length = 2;			//<<< Number of bytes to write
-	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
+	if (write(fd, weriteB, length) != length)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
 		fprintf(stderr,"Failed to write to the i2c bus.\n");
@@ -82,7 +82,7 @@ int setReg8(uint8_t reg, uint8_t val) {
 int setReg(uint8_t reg) {
 	weriteB[0] = reg;
 	length = 1;			//<<< Number of bytes to write
-	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
+	if (write(fd, weriteB, length) != length)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
 		fprintf(stderr,"setReg:%i:Failed to write.\n",reg);
@@ -99,7 +99,7 @@ int calibrationEC(int16_t valueUs)
 	weriteB[1] = pointer[0];
 	weriteB[2] = pointer[1];
 	length = 3;			//<<< Number of bytes to write
-	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
+	if (write(fd, weriteB, length) != length)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
 		fprintf(stderr,"Failed to write to the i2c bus.\n");
@@ -138,13 +138,13 @@ float getTemp() {
 }
 
 float getVWC() {
-	return getVal(REG_READ_VWC) / 100;
+	return getVal(REG_READ_VWC);
 }
 
 int getData(float *readings) {
 	weriteB[0] = REG_GET_DATA;
 	length = 1;			//<<< Number of bytes to write
-	if (write(fd, weriteB, length) != length)//write() returns the number of bytes actually written, if it doesn't match then an error occurred (e.g. no response from the device)
+	if (write(fd, weriteB, length) != length)
 			{
 		/* ERROR HANDLING: i2c transaction failed */
 		fprintf(stderr,"Failed to write to the i2c bus.\n");
