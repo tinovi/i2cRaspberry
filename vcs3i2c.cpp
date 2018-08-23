@@ -96,6 +96,7 @@ int setReg(uint8_t reg) {
 
 int calibrationEC(int16_t valueUs)
 {
+	fprintf(stderr,"calibrationEC:%i.\n",valueUs);
 	weriteB[0] = REG_CALIBRATE_EC;
 	uint8_t *pointer = (uint8_t *)&valueUs;
 	weriteB[1] = pointer[0];
