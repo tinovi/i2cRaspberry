@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 			fprintf(stderr, "Please supply new value in µS/cm\n");
 			exit (EXIT_FAILURE);
 		}
-		int i = strtol(argv[3], NULL, 16);
+		int i = strtol(argv[3], NULL, 10);
 		calibrationEC(i);
 		return 0;
 	}
