@@ -170,7 +170,7 @@ int getData(float readings[]) {
 				pointer[0] = readB[ar * 2];
 				pointer[1] = readB[ar * 2 + 1];
 				if (ar < 3) {
-					readings[ar] = ret / 100;
+					readings[ar] = ret / 100.0;
 				} else {
 					readings[ar] = ret;
 				}
