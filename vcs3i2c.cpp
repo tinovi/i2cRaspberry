@@ -144,6 +144,10 @@ float getVWC() {
 	return getVal(REG_READ_VWC);
 }
 
+float getCalEc(){
+	return getVal(REG_CEC_GET) / 100;
+}
+
 int getData(float readings[]) {
 	weriteB[0] = REG_GET_DATA;
 	length = 1;			//<<< Number of bytes to write

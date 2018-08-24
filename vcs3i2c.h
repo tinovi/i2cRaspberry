@@ -33,6 +33,7 @@
 #define  REG_CALIBRATE_AIR    0x06
 #define  REG_CALIBRATE_WATER  0x07
 #define  REG_CALIBRATE_EC  0x10
+#define REG_CEC_GET 0x11
 
 #define REG_SET_I2C_ADDR    0x08
 
@@ -46,6 +47,7 @@ float getE25();
 float getEC();
 float getTemp();
 float getVWC();
+float getCalEc();
 int getData(float retVal[]);
 
 

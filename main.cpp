@@ -55,11 +55,17 @@ int main(int argc, char **argv) {
 	}
 
 	if (strcmp(argv[2], "air") == 0) {
-		fprintf(stdout, "calibration result: %i",calibrationAir());
+		fprintf(stdout, "calibration result: %i \n",calibrationAir());
 		return 0;
 	}
+
 	if (strcmp(argv[2], "water") == 0) {
-		fprintf(stdout, "calibration result: %i",calibrationWater());
+		fprintf(stdout, "calibration result: %i \n",calibrationWater());
+		return 0;
+	}
+
+	if (strcmp(argv[2], "calecget") == 0) {
+		fprintf(stdout, "EC calibration result: %f \n",getCalEc());
 		return 0;
 	}
 	return 0;
