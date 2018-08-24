@@ -129,15 +129,15 @@ int newReading() {
 }
 
 float getE25() {
-	return getVal(REG_READ_E25) / 100;
+	return getVal(REG_READ_E25) / 100.0;
 }
 
 float getEC() {
-	return getVal(REG_READ_EC) / 100;
+	return getVal(REG_READ_EC) / 100.0;
 }
 
 float getTemp() {
-	return getVal(REG_READ_TEMP) / 100;
+	return getVal(REG_READ_TEMP) / 100.0;
 }
 
 float getVWC() {
@@ -145,7 +145,7 @@ float getVWC() {
 }
 
 float getCalEc(){
-	return getVal(REG_CEC_GET) / 100;
+	return getVal(REG_CEC_GET) / 100.0;
 }
 
 int getData(float readings[]) {
