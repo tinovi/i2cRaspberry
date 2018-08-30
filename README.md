@@ -33,7 +33,7 @@ To get software execute following on Raspberry Pi:
 
 `cd i2cRaspberry`
 
-`chmod 777 *.sh` to add for scripts execute permission
+`chmod 777 *.sh` to add execute permission
 
 `./mk.sh` to make demo executable
 
