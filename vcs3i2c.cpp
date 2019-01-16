@@ -145,7 +145,7 @@ float getVWC() {
 }
 
 float getCalEc(){
-	return getVal(REG_CEC_GET) / 100.0;
+	return getVal(REG_CEC_GET) / 10.0;
 }
 
 int getData(float readings[]) {
@@ -169,10 +169,19 @@ int getData(float readings[]) {
 				uint8_t *pointer = (uint8_t *) &ret;
 				pointer[0] = readB[ar * 2];
 				pointer[1] = readB[ar * 2 + 1];
-				if (ar < 3) {
-					readings[ar] = ret / 100.0;
-				} else {
-					readings[ar] = ret;
+				switch(ar){
+					case 0:
+						readings[ar] = ret / 100.0;
+						break;
+					case 1:
+						readings[ar] = ret / 10.0;
+						break;
+					case 2:
+						readings[ar] = ret / 100.0;
+						break;
+					case 3:
+						readings[ar] = ret;
+						break;
 				}
 			}
 
