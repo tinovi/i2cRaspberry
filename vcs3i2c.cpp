@@ -183,7 +183,6 @@ int getData(float readings[]) {
 						readings[ar] = ret;
 						break;
 				}
-				ar++;
 			}
 
 		}
