@@ -65,6 +65,8 @@ int main(int argc, char **argv) {
 	}
 
 	if (strcmp(argv[2], "cap") == 0) {
+		newReading(); // start sensor reading
+		usleep(200000); //let sensor read data
 		fprintf(stdout, "cap: %i \n",getCap());
 		return 0;
 	}
