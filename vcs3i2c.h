@@ -29,6 +29,7 @@
 #define  REG_READ_EC      0x03
 #define  REG_READ_TEMP    0x04
 #define  REG_READ_VWC     0x05
+#define  REG_CAP     0x0A
 
 #define  REG_CALIBRATE_AIR    0x06
 #define  REG_CALIBRATE_WATER  0x07
@@ -49,6 +50,7 @@ float getTemp();
 float getVWC();
 float getCalEc();
 int getData(float retVal[]);
+int getCap();
 
 
 #endif /* VCS3I2C_H_ */

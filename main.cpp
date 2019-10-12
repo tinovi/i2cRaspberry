@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
 
 	if (strcmp(argv[2], "calec") == 0) {
 		if (argc < 4) {
-			fprintf(stderr, "Please supply new value in µS/cm\n");
+			fprintf(stderr, "Please supply new value in ï¿½S/cm\n");
 			exit (EXIT_FAILURE);
 		}
 		int i = strtol(argv[3], NULL, 10);
@@ -61,6 +61,11 @@ int main(int argc, char **argv) {
 
 	if (strcmp(argv[2], "water") == 0) {
 		fprintf(stdout, "calibration result: %i \n",calibrationWater());
+		return 0;
+	}
+
+	if (strcmp(argv[2], "CAP") == 0) {
+		fprintf(stdout, "CAP: %i \n",getCap());
 		return 0;
 	}
 
