@@ -50,7 +50,7 @@ float getTemp();
 float getVWC();
 float getCalEc();
 int getData(float retVal[]);
-int getCap();
+int16_t getCap();
 
 
 #endif /* VCS3I2C_H_ */

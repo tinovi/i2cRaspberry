@@ -132,7 +132,7 @@ float getE25() {
 	return getVal(REG_READ_E25) / 100.0;
 }
 
-int getCap(){
+int16_t getCap(){
     return getVal(REG_CAP);
 }
 
