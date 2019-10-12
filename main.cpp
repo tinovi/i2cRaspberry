@@ -64,8 +64,8 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 
-	if (strcmp(argv[2], "CAP") == 0) {
-		fprintf(stdout, "CAP: %i \n",getCap());
+	if (strcmp(argv[2], "cap") == 0) {
+		fprintf(stdout, "cap: %i \n",getCap());
 		return 0;
 	}
 
