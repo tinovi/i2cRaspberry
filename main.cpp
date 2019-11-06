@@ -46,13 +46,14 @@ int main(int argc, char **argv) {
 
 	if (strcmp(argv[2], "vals") == 0) {
 		newReading(); // start sensor reading
-		usleep(200000); //let sensor read data
+		usleep(100000); //let sensor read data
 		//fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
 		float fat[4];
 		getData(fat);
 		fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",fat[0], fat[1],fat[2],fat[3]);
 		return 0;
 	}
+
 
 	if (strcmp(argv[2], "air") == 0) {
 		fprintf(stdout, "calibration result: %i \n",calibrationAir());
@@ -66,10 +67,18 @@ int main(int argc, char **argv) {
 
 	if (strcmp(argv[2], "cap") == 0) {
 		newReading(); // start sensor reading
-		usleep(200000); //let sensor read data
+		usleep(100000); //let sensor read data
 		fprintf(stdout, "cap: %i \n",getCap());
 		return 0;
 	}
+
+
+        if (strcmp(argv[2], "rc") == 0) {
+                newReading(); // start sensor reading
+                usleep(100000); //let sensor read data
+                fprintf(stdout, "rc: %i \n",getRc());
+                return 0;
+        }
 
 	if (strcmp(argv[2], "calecget") == 0) {
 		fprintf(stdout, "EC calibration result: %f \n",getCalEc());

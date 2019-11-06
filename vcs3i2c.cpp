@@ -29,7 +29,7 @@ uint8_t weriteB[3] = { 0 };
 int length;
 
 int getState() { //-1:no data, 0:err, 1:ok
-	usleep(100000);
+	usleep(300000);
 	length = 1;			//<<< Number of bytes to read
 	if (read(fd, readB, length) != length) {
 		//ERROR HANDLING: i2c transaction failed
@@ -51,7 +51,7 @@ int16_t getVal(uint8_t reg) {
 		fprintf(stderr,"getVal:%i:Failed to write.\n",reg);
 		return -1;
 	}
-	usleep(100000);
+	usleep(10000);
 	length = 2;			//<<< Number of bytes to read
 	if (read(fd, readB, length) != length) {
 		//ERROR HANDLING: i2c transaction failed
@@ -81,7 +81,7 @@ int setReg8(uint8_t reg, uint8_t val) {
 	}
 }
 
-int setReg(uint8_t reg) {
+int setReg(uint8_t reg, long sleep) {
 	weriteB[0] = reg;
 	length = 1;			//<<< Number of bytes to write
 	if (write(fd, weriteB, length) != length)
@@ -90,6 +90,7 @@ int setReg(uint8_t reg) {
 		fprintf(stderr,"setReg:%i:Failed to write.\n",reg);
 		return -1;
 	} else {
+		usleep(sleep);
 		return getState();
 	}
 }
@@ -113,11 +114,11 @@ int calibrationEC(int16_t valueUs)
 }
 
 int calibrationAir() {
-	return setReg(REG_CALIBRATE_AIR);
+	return setReg(REG_CALIBRATE_AIR,300000);
 }
 
 int calibrationWater() {
-	return setReg(REG_CALIBRATE_WATER);
+	return setReg(REG_CALIBRATE_WATER,300000);
 }
 
 int newAddress(int newAddr) {
@@ -125,7 +126,7 @@ int newAddress(int newAddr) {
 }
 
 int newReading() {
-	return setReg(REG_READ_START);
+	return setReg(REG_READ_START,300000);
 }
 
 float getE25() {
@@ -135,6 +136,11 @@ float getE25() {
 int16_t getCap(){
     return getVal(REG_CAP);
 }
+
+int16_t getRc(){
+    return getVal(REG_RC);
+}
+
 
 float getEC() {
 	return getVal(REG_READ_EC) / 10.0;
