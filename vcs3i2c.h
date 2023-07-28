@@ -54,6 +54,7 @@ float getTemp();
 float getVWC();
 float getCalEc();
 int getData(float retVal[]);
+int getDataLeaf(float retVal[]);
 int16_t getCap();
 int16_t getRc();
 int16_t getVal(uint8_t reg);
