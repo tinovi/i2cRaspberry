@@ -54,6 +54,15 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 
+	if (strcmp(argv[2], "leaf") == 0) {
+		newReading(); // start sensor reading
+		usleep(100000); //let sensor read data
+		//fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
+		float fat[2];
+		getData(fat);
+		fprintf(stdout,"%.2f,%.2f\r\n",fat[0], fat[1]);
+		return 0;
+	}
 
 	if (strcmp(argv[2], "air") == 0) {
 		fprintf(stdout, "calibration result: %i \n",calibrationAir());

@@ -199,3 +199,32 @@ int getData(float readings[]) {
 	}
 	return 0;
 }
+
+int getDataLeaf(float readings[]) {
+	weriteB[0] = REG_GET_DATA;
+	length = 1;			//<<< Number of bytes to write
+	if (write(fd, weriteB, length) != length)
+			{
+		/* ERROR HANDLING: i2c transaction failed */
+		fprintf(stderr,"getData::Failed to write \n");
+		return -1;
+	} else {
+
+		length = 4;			//<<< Number of bytes to read
+		if (read(fd, readB, length) != length) {
+			//ERROR HANDLING: i2c transaction failed
+			fprintf(stderr,"getData::Failed to read \n");
+			return -1;
+		} else {
+			int16_t ret;
+			for (int ar = 0; ar < 2; ar++) {
+				uint8_t *pointer = (uint8_t *) &ret;
+				pointer[0] = readB[ar * 2];
+				pointer[1] = readB[ar * 2 + 1];
+				readings[ar] = ret / 100.0;
+			}
+
+		}
+	}
+	return 0;
+}
