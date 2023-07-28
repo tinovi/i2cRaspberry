@@ -80,6 +80,13 @@ int main(int argc, char **argv) {
                 return 0;
         }
 
+        if (strcmp(argv[2], "rt") == 0) {
+                newReading(); // start sensor reading
+                usleep(100000); //let sensor read data
+                fprintf(stdout, "rc: %i \n",getVal32(REG_RT));
+                return 0;
+        }
+
 	if (strcmp(argv[2], "calecget") == 0) {
 		fprintf(stdout, "EC calibration result: %f \n",getCalEc());
 		return 0;

@@ -33,6 +33,7 @@
 #define  REG_CAP     0x0A
 #define  REG_RES     0x0B
 #define  REG_RC     0x0C
+#define  REG_RT     0x0D
 
 #define  REG_CALIBRATE_AIR    0x06
 #define  REG_CALIBRATE_WATER  0x07
@@ -55,5 +56,6 @@ float getCalEc();
 int getData(float retVal[]);
 int16_t getCap();
 int16_t getRc();
-
+int16_t getVal(uint8_t reg);
+uint32_t getVal32(uint8_t reg);
 #endif /* VCS3I2C_H_ */

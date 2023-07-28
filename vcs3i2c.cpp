@@ -67,6 +67,36 @@ int16_t getVal(uint8_t reg) {
 	}
 }
 
+uint32_t getVal32(uint8_t reg) {
+
+        weriteB[0] = reg;
+        length = 1;                     //<<< Number of bytes to write
+        if (write(fd, weriteB, length) != length)
+                        {
+                /* ERROR HANDLING: i2c transaction failed */
+                fprintf(stderr,"getVal32:%i:Failed to write.\n",reg);
+                return -1;
+        }
+        usleep(10000);
+        length = 4;                     //<<< Number of bytes to read
+        if (read(fd, readB, length) != length) {
+                //ERROR HANDLING: i2c transaction failed
+                fprintf(stderr,"getVal32:%i:Failed to read .\n");
+                return -1;
+        } else {
+                //printf("Data read: %s\n", readB);
+                uint32_t ret;
+                uint8_t *pointer = (uint8_t *) &ret;
+                pointer[0] = readB[0];
+                pointer[1] = readB[1];
+                pointer[2] = readB[2];
+                pointer[3] = readB[3];
+
+                return ret;
+        }
+}
+
+
 int setReg8(uint8_t reg, uint8_t val) {
 	weriteB[0] = reg;
 	weriteB[1] = val;
