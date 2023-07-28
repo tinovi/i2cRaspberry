@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
 		usleep(100000); //let sensor read data
 		//fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
 		float fat[2];
-		getData(fat);
+		getDataLeaf(fat);
 		fprintf(stdout,"%.2f,%.2f\r\n",fat[0], fat[1]);
 		return 0;
 	}
