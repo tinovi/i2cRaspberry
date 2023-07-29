@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
 
 	if (strcmp(argv[2], "leaf") == 0) {
 		newReading(); // start sensor reading
-		usleep(100000); //let sensor read data
+		usleep(200000); //let sensor read data
 		//fprintf(stdout,"%.2f,%.2f,%.2f,%.2f\r\n",getE25(), getEC(),getTemp(),getVWC());
 		float fat[2];
 		getDataLeaf(fat);
