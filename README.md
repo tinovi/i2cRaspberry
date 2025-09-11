@@ -41,6 +41,21 @@ To get software execute following on Raspberry Pi:
 
 `./svcs 0x63 addr 0x65` to change default address 0x63 to new I2C address: 0x65
 
+for soil sensor calibration:
+
+`./svcs 0x63 air`
+`./svcs 0x63 water`
+
+
+for multisoil sensor calibration:
+
+`./svcs 0x65 air`
+`./svcs 0x65 water`
+
+for multisoil sensor reading:
+
+`./svcs 0x65 multi`
+
 
 ## Interfacing from Arduino
 **WARNING!!! use 3.3 voltage levels only, more voltage will damage device**

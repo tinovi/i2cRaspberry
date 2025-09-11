@@ -258,3 +258,37 @@ int getDataLeaf(float readings[]) {
 	}
 	return 0;
 }
+
+void getMultiRaw(vals_t *vals){
+	weriteB[0] = REG_GET_DATA;
+	length = 1;			//<<< Number of bytes to write
+	if (write(fd, weriteB, length) != length)
+			{
+		/* ERROR HANDLING: i2c transaction failed */
+		fprintf(stderr,"getData::Failed to write \n");
+		return -1;
+	} else {
+
+		length = 14;			//<<< Number of bytes to read
+		if (read(fd, vals, length) != length) {
+			//ERROR HANDLING: i2c transaction failed
+			fprintf(stderr,"getData::Failed to read \n");
+			return -1;
+		}
+	}
+	return 0;
+}
+
+
+void getMultiData(soil_ret_t *data){
+  vals_t vals;
+  getRaw(&vals);
+  for(int a=0;a<MULTI_ZONES;a++){
+		  data->dp[a] = vals.dp[a]/100.0;
+		  data->vwc[a] = (4.3e-6 * pow(data->dp[a],3) - 5.5e-4*pow(data->dp[a],2) + 2.92e-2*data->dp[a] - 5.3e-2)* 100.0;
+	}
+	for(int a=0;a<MULTI_TEMPS;a++){
+		  data->temp[a] = vals.temp[a]/100.0;
+	}
+
+}

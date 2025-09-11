@@ -100,5 +100,17 @@ int main(int argc, char **argv) {
 		fprintf(stdout, "EC calibration result: %f \n",getCalEc());
 		return 0;
 	}
+
+	if (strcmp(argv[2], "multi") == 0) {
+		newReading(); // start sensor reading
+		usleep(100000); //let sensor read data
+		soil_ret_t data;
+		getMultiData(data);
+		fprintf(stdout,"temps: %.2f,%.2f\r\n",data.temp[0], data.temp[1]);
+		fprintf(stdout,"vwc: %.2f,%.2f,%.2f,%.2f,%.2f\r\n",data.vwc[0], data.vwc[1],data.vwc[2],data.vwc[3],data.vwc[4]);
+		return 0;
+	}
+
+
 	return 0;
 }

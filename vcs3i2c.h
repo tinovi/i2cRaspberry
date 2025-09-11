@@ -19,6 +19,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+  typedef struct{
+	  int16_t temp[MULTI_TEMPS];
+	  int16_t dp[MULTI_ZONES];
+  } vals_t;
+
+  typedef struct{
+	  float temp[MULTI_TEMPS];
+	  float dp[MULTI_ZONES];
+	  float vwc[MULTI_ZONES];
+  } soil_ret_t;
 
 #define ADDR 0x63
 
@@ -59,4 +69,6 @@ int16_t getCap();
 int16_t getRc();
 int16_t getVal(uint8_t reg);
 uint32_t getVal32(uint8_t reg);
+void getMultiData(soil_ret_t *data);
+void getMultiRaw(vals_t *vals);
 #endif /* VCS3I2C_H_ */
